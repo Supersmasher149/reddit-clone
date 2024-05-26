@@ -1,7 +1,13 @@
-import { Button, Flex, LinkBox, LinkOverlay, Spacer, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Spacer,
+  Text,
+} from "@chakra-ui/react";
 import { FaArrowUp, FaArrowDown, FaComment } from "react-icons/fa";
 
 import React from "react";
+import CommentThingy from "./CommentThingy";
 //TODO Add flywheel
 interface comment {}
 export interface PostProps {
@@ -17,9 +23,7 @@ export interface PostProps {
   content: string;
 }
 
-function getDateString(date: number) {
-  
-}
+function getDateString(date: number) {}
 
 function Post({
   id,
@@ -35,23 +39,25 @@ function Post({
 }: PostProps) {
   return (
     <div className="post">
-        <Flex direction={'column'}>
-          <Text>{new Date(dateCreated).toString()}</Text>
-          <Text>{subRedditName}</Text>
+      <Flex direction={"column"}>
+        <Text>{new Date(dateCreated).toString()}</Text>
+        <Text>{subRedditName}</Text>
+      </Flex>
+      <Spacer />
+      <Heading>{postTitle}</Heading>
+      <Text py={3}>{content}</Text>
+      <Flex gap={10}>
+        <Flex gap={3} alignItems={"center"}>
+          <FaArrowUp />
+          <Text>{postTotal}</Text>
+          <FaArrowDown />
         </Flex>
-        <Spacer />
-        <Text>{postTitle}</Text>
-        <Flex>
-          <Flex>
-            <FaArrowUp />
-            <Text>{postTotal}</Text>
-            <FaArrowDown />
-          </Flex>
-          <Flex>
-            <FaComment />
-            <Text>{commentTotal}</Text>
-          </Flex>
+        <Flex gap={4} alignItems={"center"}>
+          <FaComment />
+          <Text>{commentTotal}</Text>
         </Flex>
+      </Flex>
+      <CommentThingy />
     </div>
   );
 }

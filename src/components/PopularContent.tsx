@@ -1,6 +1,7 @@
 import React from 'react'
 import type { PostProps } from './Post'
 import Post from './Post'
+import { Flex } from '@chakra-ui/react';
 
 const postData: PostProps= {
   id: "1",
@@ -16,19 +17,13 @@ const postData: PostProps= {
 }
 const x = 1715779978147;
 let date1 = new Date(x).getTime()
-let date2 = new Date().getTime()
-
-let y = date2 - date1;
-let b = new Date(y).getMinutes()
-// y/=60;
-// y = Math.abs(Math.round(y))
 
 
 function PopularContent() {
   return (
-    <div>
-       <Post id={"1"} commentTotal={1} content={postData.content} dateCreated={b} postDislikes={4} postLikes={10} postTotal={6} postTitle='Reddit' subRedditName='reddit' key={1} comments={[]} />
-    </div>
+    <Flex justify={'center'}>
+      <Post id={"1"} commentTotal={1} content={postData.content} dateCreated={date1} postDislikes={4} postLikes={10} postTotal={6} postTitle='Reddit' subRedditName='reddit' key={1} comments={[]} />
+    </Flex>
   )
 }
 
